@@ -431,9 +431,6 @@
     .features-bar { padding: 18px 14px; }
     .explore-grid { grid-template-columns: 1fr; }
   }
-
-  /* ── CUSTOM CURSOR ── */
-  * { cursor: none !important; }
   .cursor-dot {
     position: fixed; top: 0; left: 0; pointer-events: none; z-index: 99999;
     width: 8px; height: 8px; border-radius: 50%;
@@ -573,6 +570,9 @@
   @media (max-width:900px) { .product-grid { grid-template-columns: repeat(2,1fr); } }
   @media (max-width:600px) { .product-grid { grid-template-columns: 1fr; } .cta-band { flex-direction: column; } }
 
+
+  /* CURSOR OVERRIDE - must be last */
+  *, *::before, *::after { cursor: none !important; }
 </style>
 </head>
 <body>
