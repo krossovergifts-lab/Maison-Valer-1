@@ -225,13 +225,27 @@
   .variant-name { font-size: 12px; letter-spacing: 0.15em; color: var(--cream); flex-shrink: 0; }
 
   .variants-title {
-    font-size: clamp(14px, 1.5vw, 20px); letter-spacing: 0.06em;
-    color: var(--cream); margin-bottom: 10px; flex-shrink: 0;
+    font-size: clamp(14px, 1.5vw, 18px); letter-spacing: 0.06em;
+    color: var(--cream); margin-bottom: 12px; flex-shrink: 0;
   }
-  .variants-desc {
-    font-size: clamp(9px, 0.85vw, 11px); letter-spacing: 0.08em;
-    color: var(--muted); text-transform: uppercase; line-height: 1.75;
+  .variant-descriptions {
+    display: flex; flex-direction: column; gap: 10px;
     flex-shrink: 0;
+  }
+  .variant-desc-item {
+    padding: 10px 12px;
+    border-left: 2px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .variant-desc-item:hover { border-left-color: var(--gold); }
+  .variant-desc-heading {
+    font-size: clamp(10px, 1vw, 12px); letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .variant-desc-text {
+    font-size: clamp(8px, 0.8vw, 10px); letter-spacing: 0.07em;
+    color: var(--muted); text-transform: uppercase; line-height: 1.8;
   }
 
   /* Featured product — right column, always matches left column total height */
@@ -609,14 +623,21 @@
           <div class="variant-name">Black</div>
         </div>
       </div>
-      <h3 class="variants-title">Choose Your Signature Finish</h3>
-      <p class="variants-desc">Select the finish that reflects your personal style. Each Maison Valér notebook is crafted with premium textured leather, designed to complement professional environments from boardrooms to everyday executive carry.</p>
-      <h4 class="variants-title">Heritage Brown</h4>
-       <p class="variants-desc">Warm, timeless, and deeply refined. Heritage Brown reflects classic craftsmanship and understated confidence. Its rich leather tone develops character over time, making it the perfect companion for professionals who appreciate tradition with modern functionality.</p>
-      <h4 class="variants-title">Heritage Brown</h4>
-       <p class="variants-desc">Warm, timeless, and deeply refined. Heritage Brown reflects classic craftsmanship and understated confidence. Its rich leather tone develops character over time, making it the perfect companion for professionals who appreciate tradition with modern functionality.</p>
-      <h4 class="variants-title">Heritage Brown</h4>
-       <p class="variants-desc">Warm, timeless, and deeply refined. Heritage Brown reflects classic craftsmanship and understated confidence. Its rich leather tone develops character over time, making it the perfect companion for professionals who appreciate tradition with modern functionality.</p>
+      <h2 class="variants-title">Choose Your Signature Finish</h2>
+      <div class="variant-descriptions">
+        <div class="variant-desc-item">
+          <h3 class="variant-desc-heading">Heritage Brown</h3>
+          <p class="variant-desc-text">Warm, timeless, and deeply refined. Heritage Brown reflects classic craftsmanship and understated confidence — the perfect companion for professionals who appreciate tradition with modern functionality.</p>
+        </div>
+        <div class="variant-desc-item">
+          <h3 class="variant-desc-heading">Stone Gray</h3>
+          <p class="variant-desc-text">Minimal, balanced, and quietly sophisticated. Stone Gray offers a contemporary neutral tone that blends seamlessly into modern workspaces and creative environments.</p>
+        </div>
+        <div class="variant-desc-item">
+          <h3 class="variant-desc-heading">Midnight Black</h3>
+          <p class="variant-desc-text">Bold, sharp, and authoritative. Midnight Black represents modern executive style — clean, powerful, and unmistakably premium for professionals who prefer a confident, polished look.</p>
+        </div>
+      </div>
     </div>
 
     </div><!-- end .product-left -->
