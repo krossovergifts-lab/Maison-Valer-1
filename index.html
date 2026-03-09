@@ -150,28 +150,20 @@
   #product {
     padding: clamp(40px,5vw,60px) var(--pad);
     background: linear-gradient(180deg,transparent 0%,rgba(15,9,3,0.6) 100%);
-    min-height: 100vh;
-    display: flex; align-items: center;
   }
   .product-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
     gap: 14px;
     max-width: 1200px; margin: 0 auto; width: 100%;
-    /* lock to viewport so both columns match height */
-    height: calc(100vh - 140px);
-    max-height: 860px;
-    min-height: 600px;
   }
 
-  /* Features bar — compact top row */
+  /* Features bar */
   .features-bar {
     background: rgba(20,13,6,0.88); border: 1px solid var(--border);
     border-radius: 14px; padding: 14px 20px;
     display: flex; justify-content: space-between; align-items: center;
     gap: 6px; grid-column: 1; grid-row: 1; backdrop-filter: blur(12px);
-    /* Don't stretch — only as tall as content */
     align-self: start;
   }
   .feature-item {
@@ -191,34 +183,38 @@
     color: var(--muted); line-height: 1.3; max-width: 68px;
   }
 
-  /* Color variants — fills remaining left space */
+  /* Color variants */
   .color-variants {
     background: rgba(20,13,6,0.88); border: 1px solid var(--border);
     border-radius: 14px; padding: 18px 20px;
     grid-column: 1; grid-row: 2; backdrop-filter: blur(12px);
     display: flex; flex-direction: column;
-    overflow: hidden;
   }
   .variants-grid {
     display: grid; grid-template-columns: repeat(3,1fr);
-    gap: 10px; margin-bottom: 10px; flex: 1; min-height: 0;
+    gap: 10px; margin-bottom: 14px;
   }
-  .variant-card { text-align: center; display: flex; flex-direction: column; min-height: 0; }
+  .variant-card { text-align: center; display: flex; flex-direction: column; }
   .variant-img {
-    flex: 1; min-height: 0;
+    aspect-ratio: 3/4;
     border-radius: 10px; margin-bottom: 8px;
     border: 1px solid var(--border); overflow: hidden;
     transition: border-color 0.3s;
   }
   .variant-img:hover { border-color: var(--gold); }
   .variant-img img { width: 100%; height: 100%; object-fit: cover; }
-  .variant-name { font-size: 12px; letter-spacing: 0.15em; color: var(--cream); flex-shrink: 0; }
-  .variant-desc {
-    font-size: 9px; letter-spacing: 0.08em; color: var(--muted);
-    text-transform: uppercase; line-height: 1.6; margin-top: 8px; flex-shrink: 0;
+  .variant-name { font-size: 12px; letter-spacing: 0.15em; color: var(--cream); }
+
+  .variants-title {
+    font-size: clamp(14px, 1.5vw, 20px); letter-spacing: 0.06em;
+    color: var(--cream); margin-bottom: 10px;
+  }
+  .variants-desc {
+    font-size: clamp(9px, 0.85vw, 11px); letter-spacing: 0.08em;
+    color: var(--muted); text-transform: uppercase; line-height: 1.75;
   }
 
-  /* Featured product — right col, exact same total height as left col */
+  /* Featured product */
   .featured-product {
     grid-column: 2; grid-row: 1 / 3;
     background: rgba(20,13,6,0.88); border: 1px solid var(--border);
@@ -236,13 +232,13 @@
     font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
     color: var(--gold); margin-bottom: 10px; flex-shrink: 0;
   }
-  /* Image takes all remaining space, never overflows */
   .featured-img-wrap {
-    flex: 1; min-height: 0;
+    flex: 1;
     border-radius: 10px; overflow: hidden;
     border: 1px solid var(--border);
     background: rgba(10,6,2,0.4);
     display: flex; align-items: center; justify-content: center;
+    min-height: 400px;
   }
   .featured-img-wrap img {
     width: 100%; height: 100%;
@@ -375,12 +371,11 @@
     .nav-mobile { top: 64px; }
     #hero { padding-top: 80px; }
     .hero-product { width: clamp(160px,52vw,360px); top:45%; }
-    #product { min-height: auto; display: block; }
-    .product-layout { grid-template-columns: 1fr; height: auto; max-height: none; min-height: auto; }
-    .features-bar { grid-column:1; grid-row:auto; align-self: auto; }
+    .product-layout { grid-template-columns: 1fr; }
+    .features-bar { grid-column:1; grid-row:auto; }
     .color-variants { grid-column:1; grid-row:auto; }
-    .featured-product { grid-column:1; grid-row:auto; min-height: 500px; }
-    .featured-img-wrap { flex: none; height: 380px; }
+    .featured-product { grid-column:1; grid-row:auto; }
+    .featured-img-wrap { min-height: 380px; }
     .explore-layout { grid-template-columns: 1fr; }
     .gifting-card { grid-template-columns: 1fr; }
     .gifting-image { min-height: 340px; }
@@ -534,7 +529,7 @@
 <section id="product">
   <div class="product-layout">
 
-    <!-- Features bar with real icons -->
+    <!-- Features bar -->
     <div class="features-bar fade-up">
       <div class="feature-item">
         <div class="feature-icon">
@@ -568,7 +563,7 @@
       </div>
     </div>
 
-    <!-- Color variants with real images -->
+    <!-- Color variants -->
     <div class="color-variants fade-up">
       <div class="variants-grid">
         <div class="variant-card">
@@ -590,23 +585,11 @@
           <div class="variant-name">Black</div>
         </div>
       </div>
-      <h3>Choose Your Signature Finish</h3>
-      <p class="variant-desc">Select the finish that reflects your personal style. Each Maison Valér notebook is crafted with premium textured leather and designed to complement professional environments—from boardrooms to everyday executive carry. Whether you prefer the warmth of brown, the refined neutrality of gray, or the bold authority of black, every variant delivers the same elevated experience.
-      Every detail of Maison Valér is designed for distinction. Choose from three sophisticated leather finishes—each carefully selected to express confidence, elegance, and modern executive style while maintaining the same premium craftsmanship.
-      Heritage Brown
+      <h3 class="variants-title">Choose Your Signature Finish</h3>
+      <p class="variants-desc">Select the finish that reflects your personal style. Each Maison Valér notebook is crafted with premium textured leather, designed to complement professional environments from boardrooms to everyday executive carry.</p>
+    </div>
 
-Warm, timeless, and deeply refined. Heritage Brown reflects classic craftsmanship and understated confidence. Its rich leather tone develops character over time, making it the perfect companion for professionals who appreciate tradition with modern functionality.
-
-Stone Gray
-
-Minimal, balanced, and quietly sophisticated. Stone Gray offers a contemporary neutral tone that blends seamlessly into modern workspaces and creative environments. Designed for those who value subtle elegance without compromising on presence.
-
-Midnight Black
-
-Bold, sharp, and authoritative. Midnight Black represents modern executive style—clean, powerful, and unmistakably premium. Ideal for professionals who prefer a confident, polished look that stands strong in every setting.
-      </p>>
-      </div>
-    <!-- Featured product with real image -->
+    <!-- Featured product -->
     <div class="featured-product fade-up">
       <div class="featured-eyebrow">Featured Product</div>
       <div class="featured-img-wrap">
